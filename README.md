@@ -121,10 +121,15 @@ logger:
 api:
   encryption:
     key: "zNQ2eBjhRkqNaTYLTEFzjXwJMexeSv7hOQyzK+huKSE="
+  reboot_timeout: 
+    0s
 
 ota:
   - platform: esphome
     password: "014240114ead8033e91e05b3d80ff62a"
+
+web_server:
+  port: 80
 
 wifi:
   ssid: !secret wifi_ssid
