@@ -183,6 +183,7 @@ mqtt:
   username: !secret mqtt_username
   password: !secret mqtt_password
   client_id: esphome_000001
+  reboot_timeout: 0s
   on_message: 
     - topic: esphome/turn_on
       then: 
