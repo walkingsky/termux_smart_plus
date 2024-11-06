@@ -1,3 +1,5 @@
+mqtt_broker_ip='127.0.0.1'
+
 status=`termux-battery-status`
 
 #percentage=`echo $status | sed -n '3p'`
@@ -11,18 +13,18 @@ echo $charge
 
 if [ $((percent)) -eq 100 -a $charge = '"CHARGING",' ]
 then
-	mosquitto_pub -h 127.0.0.1 -u esphome -P esphome -t esphome/turn_off -m 'will turn off'
+	mosquitto_pub -h mqtt_broker_ip -u esphome -P esphome -t esphome/turn_off -m 'will turn off'
 	echo 'will turn off'
 fi
 
 if [ $((percent)) -eq 100 -a $charge = '"FULL",' ]
 then
-	mosquitto_pub -h 127.0.0.1 -u esphome -P esphome -t esphome/turn_off -m 'will turn off'
+	mosquitto_pub -h mqtt_broker_ip -u esphome -P esphome -t esphome/turn_off -m 'will turn off'
 	echo 'will turn off'
 fi
 
 if [ $((percent)) -lt 11 -a $charge = '"DISCHARGING",' ]
 then
-	mosquitto_pub -h 127.0.0.1 -u esphome -P esphome -t esphome/turn_on -m 'will trun on'
+	mosquitto_pub -h mqtt_broker_ip -u esphome -P esphome -t esphome/turn_on -m 'will trun on'
 	echo 'will turn on'
 fi
